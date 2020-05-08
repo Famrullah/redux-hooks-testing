@@ -1,10 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { peopleAction } from '../../store/actionCreators/peopleAction';
+import Loading from '../../components/loading/loading';
+
+const PeopleList = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import('./people_list')), 3000);
+  });
+});
 
 function People() {
   const dispatch = useDispatch();
-  const { people } = useSelector((state) => state.peopleReducer);
+  const { people, isError, messages } = useSelector(
+    (state) => state.peopleReducer
+  );
 
   useEffect(() => {
     const fetchData = (people) => {
@@ -19,15 +28,9 @@ function People() {
 
   return (
     <div>
-      {people != null ? (
-        <div>
-          {people.results.map((item) => (
-            <p>{item.name}</p>
-          ))}
-        </div>
-      ) : (
-        <div>Loading...</div>
-      )}
+      <Suspense fallback={<Loading />}>
+        <PeopleList list={people} isError={isError} messages={messages} />
+      </Suspense>
     </div>
   );
 }

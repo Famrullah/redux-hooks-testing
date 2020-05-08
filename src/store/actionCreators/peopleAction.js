@@ -6,7 +6,7 @@ export const peopleAction = () => async (dispatch) => {
       type: 'WAITING_GET_PEOPLE',
     });
     const response = await axios.get(`https://swapi.dev/api/people/`);
-    dispatch({
+    await dispatch({
       type: 'GET_PEOPLE',
       payload: response.data,
     });

@@ -1,6 +1,7 @@
 const initalState = {
   people: null,
-  loading: false,
+  isError: false,
+  messages: '',
 };
 
 const peopleReducer = (state = initalState, action) => {
@@ -10,18 +11,21 @@ const peopleReducer = (state = initalState, action) => {
     case 'WAITING_GET_PEOPLE':
       return {
         ...state,
-        loading: true,
+        isError: false,
+        messages: '',
       };
     case 'ERROR_GET_PEOPLE':
       return {
         ...state,
-        loading: false,
+        isError: true,
+        messages: 'Oops Something Went Wrong ......',
       };
     case 'GET_PEOPLE':
       return {
         ...state,
-        loading: false,
         people: payload,
+        isError: false,
+        messages: 'successfully get list',
       };
     default:
       return state;
