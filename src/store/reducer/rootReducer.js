@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import peopleReducer from './peopleReducer';
+import peopleState from './peopleReducer';
 
 export default combineReducers({
-  peopleReducer,
+  peopleState,
 });

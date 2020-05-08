@@ -12,7 +12,7 @@ const PeopleList = React.lazy(() => {
 function People() {
   const dispatch = useDispatch();
   const { people, isError, messages } = useSelector(
-    (state) => state.peopleReducer
+    (state) => state.peopleState
   );
 
   useEffect(() => {
