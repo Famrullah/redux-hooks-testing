@@ -1,5 +1,8 @@
 import React, { useEffect, Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from '../../hooks/react-redux/reactReduxHooks';
 import { peopleAction } from '../../store/actionCreators/peopleAction';
 import Loading from '../../components/loading/loading';
 
