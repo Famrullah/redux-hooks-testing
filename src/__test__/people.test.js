@@ -64,7 +64,7 @@ describe('people component', () => {
     expect(actions).toEqual([]);
   });
 
-  it('should render people-list components if data.results is not empty', () => {
+  it('should render people-list components', () => {
     expect(wrapper.find(PeopleList));
   });
 
